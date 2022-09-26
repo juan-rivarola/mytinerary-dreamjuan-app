@@ -1,11 +1,25 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, Image, FlatList } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function App() {
+  const cities={
+    name:"tokyo",
+    name:"buenos aires"
+  }
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Text style={styles.text}>MyTinerary-DJ</Text>
+      <ScrollView>
+      <Text style={styles.text2}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore nihil dolorum nam nostrum est accusantium sed id quam modi hic ex fugiat, adipisci, exercitationem, fugit a! Pariatur dolor repellendus maiores doloremque ipsum alias suscipit et itaque? Dicta porro, culpa sit consectetur ad nam vitae necessitatibus, ipsam iure, doloremque corrupti provident nisi velit quisquam possimus facilis veniam praesentium laboriosam laudantium quis voluptas iste. Velit earum amet, dolorem consequatur tempora mollitia corrupti eligendi distinctio corporis quidem enim fugiat aliquam quasi ullam commodi ipsa itaque. Quod excepturi rem odio dolores quos aperiam, quidem earum fugiat ullam. Non autem assumenda excepturi cum laudantium nulla qui? Officiis esse aperiam impedit magnam mollitia nesciunt facilis aliquid minima, inventore omnis facere nam voluptates accusantium animi reprehenderit, nulla id tempore at reiciendis quo recusandae debitis quaerat dolorum ipsa? Repudiandae quae quo quia consequuntur quisquam animi totam facilis odio sint aut, voluptatem, nobis maiores eligendi omnis rem consectetur. Incidunt inventore excepturi aliquid quasi tempore nobis molestiae corporis, error voluptatibus? Exercitationem, enim hic libero a cum tempora laboriosam illo aut et ipsa illum sapiente ullam incidunt dignissimos cupiditate perspiciatis iusto corporis! Natus alias debitis ratione adipisci sit sint, quo necessitatibus, doloribus laudantium in eaque quidem architecto libero quisquam odio, eveniet hic ab distinctio sed asperiores nisi. Tempore, tempora aut. Repellat illo error ratione dolorem tenetur temporibus corrupti alias quis repellendus beatae voluptas commodi distinctio, inventore rerum obcaecati quas minima quasi, eum ut qui cum culpa molestiae repudiandae? Corporis cumque sequi reprehenderit maxime soluta voluptates tempore aperiam ducimus, odit, obcaecati totam, sapiente praesentium? Architecto culpa obcaecati eos eveniet deleniti dolore, voluptatem velit perferendis ipsum dolorum? Obcaecati, minus, perferendis odio modi asperiores aspernatur aperiam illo beatae quo iste repudiandae corrupti! Laudantium ipsa et cum error fuga culpa provident expedita quis ducimus placeat suscipit soluta minima, illum quod, dignissimos quasi cupiditate, rem earum iusto! Distinctio id placeat totam, amet aliquam numquam magnam, fugiat obcaecati, delectus porro provident esse inventore voluptatibus neque! Voluptates, ab est molestias facere totam delectus minus, qui, alias quis distinctio animi obcaecati quas corporis fugit. Nihil iure tempora, voluptates error voluptas deleniti aperiam voluptatum quibusdam quaerat sequi architecto iusto ea repellat fugit optio eaque, eveniet ullam quo, excepturi consequatur totam explicabo dolorum esse laborum! Consequatur obcaecati omnis culpa nemo quasi qui sed possimus pariatur ullam repellendus, totam itaque quam iure harum, eos cupiditate illo eligendi dolor exercitationem, soluta delectus? Reprehenderit rem quo nihil perspiciatis, consectetur, quasi est veniam maxime at quis deserunt, inventore sit suscipit culpa. Corrupti, aliquid tempore eaque atque eos dignissimos quidem consequuntur ex iusto? Nihil saepe, aspernatur necessitatibus adipisci cumque alias voluptatum. Eligendi minima animi aperiam atque quasi assumenda suscipit dolorem laudantium ea maxime, aliquam ipsam dicta, consequuntur quo qui facilis? Quisquam saepe minus incidunt voluptatum laudantium commodi exercitationem a odit? Provident, veritatis sed! Fugiat impedit soluta aliquam sunt quibusdam sed iusto consequatur quos placeat quas blanditiis ea deleniti, numquam tempora minus doloribus dignissimos ut. Sapiente reiciendis mollitia tenetur maxime. Eius aperiam neque deleniti vitae consequuntur sed nulla eligendi magnam animi repellendus impedit nesciunt quam, quia ipsum, tenetur ut ea deserunt aliquam cupiditate fuga fugit! Voluptates, non! Maxime quia laborum deserunt non hic quidem debitis. Ipsum, porro incidunt? Commodi voluptate perferendis ut placeat, deleniti ipsa enim atque odio qui earum laudantium! Mollitia nulla vitae sit saepe eos dolorum illum quae distinctio fuga. Porro non quisquam beatae, quos incidunt fuga sint minima ipsum eveniet sed magnam adipisci mollitia molestias possimus repellendus ut vel cupiditate sapiente voluptatibus omnis neque deleniti nulla officia. Nisi, adipisci voluptatibus fuga temporibus reprehenderit dicta. Ipsum cum hic natus inventore repellat recusandae delectus nemo voluptate eos vel officia quam at, vitae repellendus explicabo exercitationem eaque dolorem itaque. Veritatis, tempore accusamus? Accusamus incidunt labore id dolore quis itaque voluptate culpa a vel, earum magni molestiae vitae eum? Nisi nam perspiciatis doloribus, veniam totam accusantium mollitia placeat ea neque inventore nemo, vero iusto nihil natus earum vitae deleniti et beatae sint officiis consectetur optio error repellendus sed. Magni excepturi, enim itaque dignissimos quasi voluptatum corrupti illum perspiciatis nobis dolorum vero. Totam laudantium asperiores, et quasi voluptate quisquam assumenda id error adipisci, labore, repellendus facere cum laborum distinctio autem. Sit doloribus magnam minima rem molestiae ipsa excepturi et quam est! Eos labore officia esse voluptatibus sint possimus omnis dicta beatae, assumenda harum delectus ipsam pariatur maiores veritatis quae ducimus nostrum in officiis accusantium ut porro tempore quisquam temporibus. Odio quam quae debitis quo consequuntur. Dolores voluptates ex culpa. Facere magni suscipit accusamus possimus nostrum assumenda alias similique eveniet cum, ipsa consequatur aspernatur ad pariatur, dolores, voluptas facilis eius voluptatum. Aliquam magnam eaque nostrum tempore deleniti animi pariatur sapiente hic, repudiandae reprehenderit enim facere similique, optio accusantium ratione aut laudantium eveniet nihil excepturi laborum maiores, explicabo autem distinctio. Vitae explicabo repellat, dolores, at quo doloribus dolor quae corporis fuga, fugit quidem atque sunt aut modi. Nam, atque sunt voluptas laborum a laboriosam voluptatibus libero quaerat aliquam maxime mollitia! Ad, voluptas porro? Sapiente voluptate architecto hic minus quibusdam beatae quisquam recusandae et cum. Ipsum sunt corporis maiores recusandae quas dolorum autem numquam soluta ad nesciunt perspiciatis a beatae fugit magnam velit quidem ratione saepe, similique reiciendis dolor dolore? Magnam amet magni hic, dicta non quisquam velit unde repellendus quia placeat odio, ullam provident dolor asperiores distinctio necessitatibus eum ea ut et. Autem in sed maiores fugit adipisci natus, similique debitis eius rerum expedita consequuntur molestiae error temporibus quia recusandae magni, quo non obcaecati, excepturi id? Cumque quisquam ipsam a repellendus quae dolorem. Ipsam voluptatem dolores molestias quos expedita quas soluta neque velit, itaque, odit quibusdam exercitationem accusamus placeat quasi iste adipisci provident commodi corporis porro quo voluptatibus facilis sint? Unde soluta at vero laboriosam, modi numquam atque reiciendis, qui tempore in dignissimos velit explicabo eum neque suscipit similique a? Eligendi, ullam. Nobis molestias dolorem possimus eos ea laudantium. Blanditiis, cupiditate? Praesentium enim eos laborum. Voluptatem perspiciatis magnam quam saepe esse culpa ipsum nisi eum in facere? Vitae quasi tempore excepturi illo dolorum praesentium aut a recusandae, ea blanditiis ipsa debitis aliquam. Officiis suscipit quis labore dolorum libero natus animi earum repellat accusantium doloribus id culpa illum tempore mollitia, eum illo perferendis facilis minima deserunt sit blanditiis voluptatibus dolor. Impedit exercitationem autem odit iste consectetur harum minima fuga. Eaque eos fuga pariatur tempore, excepturi fugiat ducimus provident magnam rerum exercitationem veritatis deleniti iste quaerat temporibus labore, saepe vitae error natus? Officiis dolor, cumque distinctio porro recusandae aperiam vel corrupti iure nesciunt temporibus excepturi tempora neque numquam, iste velit ad et ducimus. Quasi repellat ratione provident magnam mollitia cupiditate sint veritatis illum fugit tempora maxime, aliquid quibusdam ullam, deleniti iste distinctio excepturi fugiat natus nisi iure qui. Ratione tempore architecto suscipit deleniti?</Text>
+      <View>
+      <Image style={styles.img} source={{uri:'http://pm1.narvii.com/6424/e89a1c91f6888742385b4c3a260824d98128dc61_00.jpg'}} />
+      </View>
+      </ScrollView>
+      <FlatList data={cities}
+                 numColumns={2}
+                 keyExtractor={(city)=>city.name}></FlatList>
+      <StatusBar style="light" />
     </View>
   );
 }
@@ -13,8 +27,20 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#000',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
+  text:{
+    fontSize:30,
+    color: '#fff'
+  },
+  text2:{
+    fontSize:15,
+    color: 'green',
+  },
+  img:{
+   width: 50,
+   height:50,
+  }
 });
