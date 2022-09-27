@@ -4,8 +4,13 @@ import { useAllQuery } from "../features/citiesApi"
 
 function Carousel (){
     const search = ''
-   let {data:cities} = useAllQuery(search)
 
+   let {data:cities, isLoading, isSuccess} = useAllQuery(search)
+   if (isLoading) {
+    cities=[]
+   } else if (isSuccess) {
+    cities=cities
+   }
     return ( 
             <FlatList 
                 horizontal={true}
@@ -15,7 +20,6 @@ function Carousel (){
 
                         <Image source={{uri:item.image}} style={styles.img}/>
                         <Text style={styles.country}>{item.country}</Text>
-                        {console.log(item.image)}
                     </View>  
             )} />
     )   

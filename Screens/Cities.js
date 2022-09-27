@@ -1,10 +1,17 @@
-import { Text, View,StyleSheet } from "react-native"
+import { Text, View,StyleSheet,ScrollView } from "react-native"
 import { TextInput } from "react-native-gesture-handler"
+import CityCard from "../components/CityCard"
+import { useAllQuery } from "../features/citiesApi"
 
 export default function Cities(){
+    let search=''
+    let{data:cities} = useAllQuery(search)
     return(
         <View style={styles.container}>
             <TextInput style={styles.input} placeholder="Search country" /> 
+                <ScrollView style={styles.cardContainer}>
+                   <CityCard data={cities}/>
+                </ScrollView>
         </View>
     )
 }
@@ -20,5 +27,8 @@ const styles =StyleSheet.create({
         backgroundColor: "white",
         borderRadius: 15,
         alignSelf: "center"
+    },
+    cardContainer:{
+        flex:0
     }
 })
