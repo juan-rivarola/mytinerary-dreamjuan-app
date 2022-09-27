@@ -21,7 +21,7 @@ export default function Welcome() {
       </View>
       </ScrollView>
 
-      <StatusBar style="light" />
+      <StatusBar style="auto" />
       <CitiesCard />
       <Footer />
     </View>
