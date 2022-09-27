@@ -5,7 +5,12 @@ import { useAllQuery } from "../features/citiesApi"
 
 export default function Cities(){
     let search=''
-    let{data:cities} = useAllQuery(search)
+    let{data:cities, isLoading, isSuccess} = useAllQuery(search)
+    if (isLoading) {
+        cities=[]
+       } else if (isSuccess) {
+        cities=cities
+       }
     return(
         <View style={styles.container}>
             <TextInput style={styles.input} placeholder="Search country" /> 
