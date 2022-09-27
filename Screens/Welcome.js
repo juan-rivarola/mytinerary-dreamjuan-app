@@ -1,12 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { ScrollView, StyleSheet, Text, View, Image, FlatList, Button, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
+import CitiesCard from './CitiesCard'
 export default function Welcome() {
-  const cities={
-    name:"tokyo",
-    name:"buenos aires"
-  }
+  
   return (
     <View style={styles.container}>
       <View style={styles.title}>
@@ -21,10 +18,9 @@ export default function Welcome() {
       <Text style={styles.text2}>Tap here to see the best destinys</Text>
       </View>
       </ScrollView>
-      <FlatList data={cities}
-                 numColumns={2}
-                 keyExtractor={(city)=>city.name}></FlatList>
+
       <StatusBar style="light" />
+      <CitiesCard />
     </View>
   );
 }
@@ -40,11 +36,11 @@ const styles = StyleSheet.create({
      flex:0,
      flexDirection:'row',
     my:{
-        fontSize:90,
+        fontSize:70,
         color:'rgb(244, 89, 0)'
     },
     tin:{
-        fontSize:90,
+        fontSize:70,
         color:'brown',
     }
   },
