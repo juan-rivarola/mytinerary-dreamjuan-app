@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { ScrollView, StyleSheet, Text, View, Image, FlatList, Button, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import CitiesCard from './CitiesCard'
+import Carousel from './Carousel'
 import Footer from './Footer';
 import Cities from './Cities';
 export default function Welcome() {
@@ -20,10 +20,9 @@ export default function Welcome() {
       <Text style={styles.text2}>Tap here to see the best destinys</Text>
       </View>
       </ScrollView>
-
       <StatusBar style="auto" />
-      <CitiesCard />
-      <Footer />
+      <Carousel />
+      {/* <Footer /> */}
     </View>
   );
 }
