@@ -15,7 +15,6 @@ function Carousel (){
 
                         <Image source={{uri:item.image}} style={styles.img}/>
                         <Text style={styles.country}>{item.country}</Text>
-                        {console.log(item.image)}
                     </View>  
             )} />
     )   
