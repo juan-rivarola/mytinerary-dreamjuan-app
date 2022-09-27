@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import citiesApi from "./citiesApi";
+import React from "react";
 
 export const  store = configureStore({
     reducer: {
@@ -11,7 +12,7 @@ export const  store = configureStore({
         inmutableCheck: false,
         serializableCheck: false,
         citiesApi: true
-    })
+    }).concat(citiesApi.middleware)
 
 })
 
