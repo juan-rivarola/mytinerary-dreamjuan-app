@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { ScrollView, StyleSheet, Text, View, Image, FlatList, Button, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import CitiesCard from './CitiesCard'
+import Footer from './Footer';
 export default function Welcome() {
   
   return (
@@ -21,6 +22,7 @@ export default function Welcome() {
 
       <StatusBar style="light" />
       <CitiesCard />
+      <Footer />
     </View>
   );
 }
