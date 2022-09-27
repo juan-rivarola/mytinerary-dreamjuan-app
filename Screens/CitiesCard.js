@@ -1,4 +1,4 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import { FlatList, View,Text,Image,StyleSheet } from "react-native"
 import { useAllQuery } from "../features/citiesApi"
 
@@ -19,16 +19,17 @@ function City (){
     // ])
     const search = ''
    let {data:cities} = useAllQuery(search)
-   console.log(cities)
+   console.log(cities.response) 
 
     return (
             <FlatList 
                 horizontal={true}
-                data={cities}
+                data={cities.response}
                 renderItem={({item}) =>(
                     <View>
-                        <Image source={item.image} style={styles.img}/>
-                        <Text style={styles.country}>{item.name}</Text>
+                        <Image source={require('./img/Havana.jpg')} style={styles.img}/>
+                        <Text style={styles.country}>{item.country}</Text>
+                        {console.log(item.image)}
                     </View>
             )} />
     )   
