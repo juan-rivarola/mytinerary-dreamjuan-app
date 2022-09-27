@@ -1,14 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { ScrollView, StyleSheet, Text, View, Image, FlatList } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import 'react-native-gesture-handler'
+import Cities from './Screens/Cities';
 import Welcome from './Screens/Welcome';
-
+import React from 'react'
+import {NavigationContainer} from '@react-navigation/native'
+import Drawer from './navigation/Drawer';
 
 export default function App() {
   return (
-    <>
-      <Welcome />
-    </>
+    <NavigationContainer>
+      <Drawer />
+    </NavigationContainer>
   )
 }
 
