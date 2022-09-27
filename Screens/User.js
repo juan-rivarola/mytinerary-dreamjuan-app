@@ -1,21 +1,34 @@
 import { View, Text,StyleSheet, Button,Alert } from 'react-native'
-import React from 'react'
+import React, { useRef } from 'react'
 import { TextInput } from 'react-native-gesture-handler'
 
 export default function User() {
+  const AccionS = (e) =>{
+    e.preventDefault()
+    axios.post (`https://my-tinerary-dreamjuan-back.herokuapp.com/auth/signin`,{  
+      mail : mailS.current.value,
+      password : passS.current.value,})
+      .then(function(response){
+        console.log(response)
+        localStorage.setItem('user',JSON.stringify(response.data.response.user))
+        // localStorage.setItem('token',JSON.stringify(response.data.response.token))
+    })
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.signin}>Sign In</Text>
       <TextInput
         placeholder='hola@gmail.com'
         style={styles.input}
+        // ref="asd"
       />
       <TextInput
         placeholder='password'
         style={styles.input}
         secureTextEntry={true}
       />
-      <Button title='Login' onPress={() => Alert.alert('Te la creiste wey :)')}></Button>
+      <Button title='Login' onPress={AccionS}></Button>
     </View>
   )
 }
