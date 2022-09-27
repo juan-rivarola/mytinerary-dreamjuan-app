@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet, Text, View, Image, FlatList, Button, Alert } fr
 import { SafeAreaView } from 'react-native-safe-area-context';
 import CitiesCard from './CitiesCard'
 import Footer from './Footer';
+import Cities from './Cities';
 export default function Welcome() {
   
   return (
