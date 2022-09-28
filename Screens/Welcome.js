@@ -2,27 +2,28 @@ import { StatusBar } from 'expo-status-bar';
 import { ScrollView, StyleSheet, Text, View, Image, FlatList, Button, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Carousel from './Carousel'
-import Footer from './Footer';
 import Cities from './Cities';
+import  Header  from '../components/Header';
+import Footer from '../components/Footer';
+import { useRef } from 'react';
 export default function Welcome() {
-  
+
+  const scrollRef = useRef()
   return (
     <View style={styles.container}>
-      <View style={styles.title}>
-         <Text style={styles.title.my}>My</Text>
-         <Text style={styles.title.tin}>Tinerary</Text>
-      </View>
-      <ScrollView>
+      <ScrollView ref={scrollRef}>
+      <Header />
       <Text style={styles.text2}>Take the trip of you always wanted, to the city of your drems</Text>
       <View style={styles.calltoaction}>
         <Button title="Let's go" color={'#B465FF'} onPress={() => Alert.alert('KE APRETAS')}></Button>
       <Image style={styles.img} source={require('../assets/img/arrow.png')} />
       <Text style={styles.text2}>Tap here to see the best destinys</Text>
       </View>
-      </ScrollView>
       <StatusBar style="auto" />
       <Carousel />
-      {/* <Footer /> */}
+      <Footer />
+      <Button style={styles.goTop} title="Top" onPress={()=> scrollRef.current.scrollTo({ x: 0, y: 0, animated: true })}/>
+      </ScrollView>
     </View>
   );
 }
@@ -33,18 +34,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#000',
     alignItems: 'center',
     justifyContent: 'flex-start',
-  },
-  title:{
-     flex:0,
-     flexDirection:'row',
-    my:{
-        fontSize:70,
-        color:'rgb(244, 89, 0)'
-    },
-    tin:{
-        fontSize:70,
-        color:'brown',
-    }
   },
   text:{
     fontSize:70,
