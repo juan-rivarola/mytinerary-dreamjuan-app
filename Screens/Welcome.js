@@ -1,12 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView, StyleSheet, Text, View, Image, FlatList, Button, Alert } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { ScrollView, StyleSheet, Text, View, Image, Button } from 'react-native';
 import Carousel from './Carousel'
-import Cities from './Cities';
 import  Header  from '../components/Header';
 import Footer from '../components/Footer';
 import { useRef } from 'react';
-export default function Welcome() {
+
+import ButtonLetsGo from '../components/ButtonLetsGo';
+
+export default function Welcome({navigation}) {
 
   const scrollRef = useRef()
   return (
@@ -15,7 +16,7 @@ export default function Welcome() {
       <Header />
       <Text style={styles.text2}>Take the trip of you always wanted, to the city of your drems</Text>
       <View style={styles.calltoaction}>
-        <Button title="Let's go" color={'#B465FF'} onPress={() => Alert.alert('KE APRETAS')}></Button>
+          <ButtonLetsGo navigation={navigation} />
       <Image style={styles.img} source={require('../assets/img/arrow.png')} />
       <Text style={styles.text2}>Tap here to see the best destinys</Text>
       </View>
