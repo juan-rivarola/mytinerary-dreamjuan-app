@@ -28,7 +28,8 @@ export default function Cities(){
 const styles =StyleSheet.create({
     container:{
         backgroundColor: "black",
-        minHeight:990
+        // minHeight:990
+        height: "100%"
     },
     input:{
         padding: 10,
