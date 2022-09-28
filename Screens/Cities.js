@@ -1,10 +1,11 @@
+import { useState } from "react"
 import { Text, View,StyleSheet,ScrollView } from "react-native"
 import { TextInput } from "react-native-gesture-handler"
 import CityCard from "../components/CityCard"
 import { useAllQuery } from "../features/citiesApi"
 
 export default function Cities(){
-    let search=''
+    let [search, setSearch]=useState('')
     let{data:cities, isLoading, isSuccess} = useAllQuery(search)
     if (isLoading) {
         cities=[]
@@ -13,8 +14,11 @@ export default function Cities(){
        }
     return(
         <View style={styles.container}>
-            <TextInput style={styles.input} placeholder="Search country" /> 
-                <ScrollView style={styles.cardContainer}>
+            <ScrollView style={styles.cardContainer}>
+            <TextInput 
+                 style={styles.input} 
+                 placeholder="Search country" 
+                 onChangeText={newT=>setSearch(newT)}/> 
                    <CityCard data={cities}/>
                 </ScrollView>
         </View>
@@ -23,7 +27,8 @@ export default function Cities(){
 
 const styles =StyleSheet.create({
     container:{
-        backgroundColor: "black"
+        backgroundColor: "black",
+        minHeight:990
     },
     input:{
         padding: 10,

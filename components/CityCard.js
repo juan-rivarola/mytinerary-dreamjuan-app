@@ -6,7 +6,7 @@ export default function(props){
     const card =(item) =>(
         <View style={styles.cards} key={item._id}>
         <Image source={{uri:item.image}} style={styles.img}/>
-                        <Text style={styles.country}>{item.country}</Text>
+                        <Text style={styles.country}>{item.name}</Text>
      </View>
         )
     return(
