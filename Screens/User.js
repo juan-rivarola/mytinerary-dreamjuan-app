@@ -1,8 +1,11 @@
 import { View, Text,StyleSheet, Button,Alert } from 'react-native'
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { TextInput } from 'react-native-gesture-handler'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
 
 export default function User() {
+  const[user, setUser] = useState()
   const AccionS = (e) =>{
     e.preventDefault()
     axios.post (`https://my-tinerary-dreamjuan-back.herokuapp.com/auth/signin`,{  
@@ -10,7 +13,9 @@ export default function User() {
       password : passS.current.value,})
       .then(function(response){
         console.log(response)
-        localStorage.setItem('user',JSON.stringify(response.data.response.user))
+        AsyncStorage.setItem('user',JSON.stringify(response.data.response.user))
+        AsyncStorage.getItem('user')
+        .then(value=> setUser(Json.parse(value)))
         // localStorage.setItem('token',JSON.stringify(response.data.response.token))
     })
   }
