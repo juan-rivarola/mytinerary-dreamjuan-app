@@ -6,7 +6,8 @@ import Footer from "../components/Footer"
 import Header from "../components/Header"
 import { useAllQuery } from "../features/citiesApi"
 
-export default function Cities(){
+export default function Cities({navigation}){
+    console.log(navigation)
     const scrollRef = useRef()
     let [search, setSearch]=useState('')
     let{data:cities, isLoading, isSuccess} = useAllQuery(search)
