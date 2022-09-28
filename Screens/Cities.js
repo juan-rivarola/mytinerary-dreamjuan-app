@@ -1,5 +1,5 @@
 import { useRef, useState } from "react"
-import { Text, View,StyleSheet,ScrollView, Button } from "react-native"
+import { Text, View,StyleSheet,ScrollView, Button, Alert, Pressable } from "react-native"
 import { TextInput } from "react-native-gesture-handler"
 import CityCard from "../components/CityCard"
 import Footer from "../components/Footer"
@@ -16,6 +16,7 @@ export default function Cities({navigation}){
        } else if (isSuccess) {
         cities=cities
        }
+
     return(
         <View style={styles.container}>
             <Header />
@@ -24,7 +25,7 @@ export default function Cities({navigation}){
                  style={styles.input} 
                  placeholder="Search country" 
                  onChangeText={newT=>setSearch(newT)}/> 
-                   <CityCard data={cities}/>
+                   <CityCard data={cities} id={cities._id}/>                
                    <Footer />
                    <Button style={styles.goTop} title="Top" onPress={()=> scrollRef.current.scrollTo({ x: 0, y: 0, animated: true })}/>
                 </ScrollView>
