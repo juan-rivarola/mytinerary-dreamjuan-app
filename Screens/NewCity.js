@@ -1,4 +1,4 @@
-import { View, Text,StyleSheet, Button } from 'react-native'
+import { View, Text,StyleSheet, Button, Alert } from 'react-native'
 import React, { useRef, useState } from 'react'
 import { TextInput } from 'react-native-gesture-handler'
 import { useCreateCityMutation } from '../features/citiesApi'
@@ -11,7 +11,7 @@ export default function NewCity() {
     const [population,setPopulation] =useState('')
     const [fundation,setFundation] =useState('')
 
-    const [newCity] = useCreateCityMutation()
+    const [newCity, {data:cityCreated, isSuccess, error}] = useCreateCityMutation()
 
     const create = ()=>{
         let cityCreate ={
@@ -21,7 +21,15 @@ export default function NewCity() {
             population:population,
             fundation:fundation
         }
+        console.log(cityCreate)
         newCity(cityCreate)
+        if (cityCreated?.isSuccess) {
+            console.log('success')
+            Alert.alert('City created succesfully')
+        } else {
+            console.log(error)
+            Alert.alert("Couldn´t create city")
+        }
     }
 
   return (
