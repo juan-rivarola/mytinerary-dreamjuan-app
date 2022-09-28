@@ -1,22 +1,41 @@
 import { View, Text,StyleSheet, Button } from 'react-native'
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { TextInput } from 'react-native-gesture-handler'
+import { useCreateCityMutation } from '../features/citiesApi'
+
 export default function NewCity() {
-    const items = [
-        {value: 'City', placeholder: ' Enter a new '},
-        {value: 'Country', placeholder: ' Enter a new '},
-        {value: 'Image', placeholder: ' Enter a new '},  
-        {value: 'Population', placeholder: ' Enter a new '},  
-        {value: 'Fundation', placeholder: ' Enter a new '},
-    ]
+
+    const [city,setCity] =useState('')
+    const [country,setCountry] =useState('')
+    const [image,setImage] =useState('')
+    const [population,setPopulation] =useState('')
+    const [fundation,setFundation] =useState('')
+
+    const [newCity] = useCreateCityMutation()
+
+    const create = ()=>{
+        let cityCreate ={
+            city:city,
+            country:country,
+            image:image,
+            population:population,
+            fundation:fundation
+        }
+        newCity(cityCreate)
+    }
+
   return (
     <View style={styles.container}>
         <View style={styles.newCity}>
             <Text style={styles.title}>New City</Text>
-            {items.map(item =>(
-                <TextInput placeholder={item.value} style={styles.input}/>
-            ))}
-            <Button title='Add city'></Button>
+
+                <TextInput  placeholder="City" style={styles.input} onChangeText={newT=>setCity(newT)}/>
+                <TextInput  placeholder="Country" style={styles.input} onChangeText={newT=>setCountry(newT)}/>
+                <TextInput  placeholder="Image" style={styles.input} onChangeText={newT=>setImage(newT)}/>
+                <TextInput  placeholder="Population" style={styles.input} onChangeText={newT=>setPopulation(newT)}/>
+                <TextInput  placeholder="Fundation" style={styles.input} onChangeText={newT=>setFundation(newT)}/>
+
+            <Button title='Add city' onPress={create}></Button>
         </View>
     </View>
   )
