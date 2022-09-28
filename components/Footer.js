@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         marginTop:40,
         height: 60,
         width: 60,
-        marginBottom:40
+        marginBottom:10
     },
     goTop:{
         alignSelf: "center",
