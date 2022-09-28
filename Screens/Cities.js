@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Text, View,StyleSheet,ScrollView } from "react-native"
 import { TextInput } from "react-native-gesture-handler"
 import CityCard from "../components/CityCard"
+import Header from "../components/Header"
 import { useAllQuery } from "../features/citiesApi"
 
 export default function Cities(){
@@ -14,6 +15,7 @@ export default function Cities(){
        }
     return(
         <View style={styles.container}>
+            <Header />
             <ScrollView style={styles.cardContainer}>
             <TextInput 
                  style={styles.input} 

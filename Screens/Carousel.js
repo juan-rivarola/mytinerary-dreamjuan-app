@@ -16,8 +16,7 @@ function Carousel (){
                 horizontal={true}
                 data={cities.response}
                 renderItem={({item}) =>( 
-                    <View>
-
+                    <View style={styles.container}>
                         <Image source={{uri:item.image}} style={styles.img}/>
                         <Text style={styles.country}>{item.country}</Text>
                     </View>  
@@ -26,6 +25,9 @@ function Carousel (){
 }
 
 const styles = StyleSheet.create({
+    container:{
+        marginTop: 40,
+    },
     img:{
         width: 205,
         height: 205
@@ -33,6 +35,7 @@ const styles = StyleSheet.create({
     country:{
         textAlign: "center",
         fontWeight: "bold",
+        fontSize:20,
         backgroundColor: "rgb(163, 163, 163)"
     }
 })

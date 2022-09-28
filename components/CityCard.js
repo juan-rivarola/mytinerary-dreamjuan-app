@@ -1,13 +1,12 @@
 import React from "react";
 import { View, StyleSheet, Image,Text } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
 export default function(props){
     const allCard = props.data.response ? props.data.response : props.data
     const card =(item) =>(
         <View style={styles.cards} key={item._id}>
-        <Image source={{uri:item.image}} style={styles.img}/>
-                        <Text style={styles.country}>{item.name}</Text>
-     </View>
+            <Image source={{uri:item.image}} style={styles.img}/>
+            <Text style={styles.country}>{item.name}</Text>
+        </View>
         )
     return(
       <>
