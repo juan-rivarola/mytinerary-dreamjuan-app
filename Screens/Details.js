@@ -1,6 +1,10 @@
-import { useEffect, useState } from "react"
-import {FlatList, Image, View, Text, StyleSheet } from "react-native"
+import { useEffect, useRef, useState } from "react"
+import {FlatList, Image, View, Text, StyleSheet, Button } from "react-native"
+import { ScrollView } from "react-native-gesture-handler"
+import Footer from "../components/Footer"
+import Itinerary from "../components/Itinerary"
 import citiesApi, { useDetailsQuery } from "../features/citiesApi"
+import { useBycityQuery } from "../features/itinerariesApi"
 
 export default function Details({navigation}){
     const id = '630e518bbe28a5faae2423c0'
@@ -8,25 +12,31 @@ let {data:city, isLoading, isSuccess}=useDetailsQuery(id)
 if (isLoading) {
     city=[]
    } else if (isSuccess) {
-    city=city
+    city=city.response
    }
-console.log(city.response)
 
+//    let {data:itineraries} = useBycityQuery(id)
+
+   const scrollRef = useRef()
     return(
-            <View style={styles.container}>
-                <View style={styles.container.details}>
-                    <View style={styles.titlecontainer}>
-                        <Text style={styles.title}>{city.response.name} </Text>
+    <ScrollView  ref={scrollRef}>
+                    <View style={styles.container}>
+                        <View style={styles.container.details}>
+                            <View style={styles.titlecontainer}>
+                                <Text style={styles.title}>{city.name} </Text>
+                            </View>
+                            <Text style={styles.close} onPress={()=> navigation.navigate("Cities")}>X</Text>
+                            <Image source={{uri:city.image}} style={styles.img}/>
+                            <Text style={styles.title}>{city.country}</Text>
+                            <View style={styles.infocontainer}>
+                                <Text style={styles.info}>Fundation Year: {city.fundation}</Text>
+                                <Text style={styles.info}>Population: {city.population}</Text>
+                            </View>
+                            <Itinerary />
+                        </View>
                     </View>
-                        <Text style={styles.close} onPress={()=> navigation.navigate("Cities")}>X</Text>
-                    <Image source={{uri:city.response.image}} style={styles.img}/>
-                    <Text style={styles.title}>{city.response.country}</Text>
-                    <View style={styles.infocontainer}>
-                        <Text style={styles.info}>Fundation Year: {city.response.fundation}</Text>
-                        <Text style={styles.info}>Population: {city.response.population}</Text>
-                    </View>
-                </View>
-            </View>
+                   
+                    </ScrollView>
     )
 }
 const styles =StyleSheet.create({

@@ -5,6 +5,7 @@ import Cities from '../Screens/Cities'
 import User from '../Screens/User'
 import NewCity from '../Screens/NewCity'
 import Details from '../Screens/Details'
+import Itinerary from '../components/Itinerary'
 
 const DrawerNav = createDrawerNavigator()
 
