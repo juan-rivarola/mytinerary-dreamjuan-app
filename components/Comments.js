@@ -2,13 +2,16 @@ import { View, Text,StyleSheet,Image } from 'react-native'
 import React from 'react'
 import { useAllQuery } from '../features/commentsApi'
 
-export default function Comments() {
-    const idItinerary = "6316673e981c8cdc211716be"
-    let {data:comments} = useAllQuery(idItinerary)
-    const arrayComments = comments.response
+
+export default function Comments(props) {
+    const id = props
+    let {data:comments} = useAllQuery(id)
+    const arrayComments = comments.response 
+    console.log(arrayComments) 
+
   return (
     <View style={styles.container}>
-            {arrayComments.map(comment => (
+            {arrayComments?.map(comment => (
                 <View style={styles.containerComment}>
                     <View style={styles.description}>
                         <Image style={styles.img} source={{uri:comment.user.photo}} />
