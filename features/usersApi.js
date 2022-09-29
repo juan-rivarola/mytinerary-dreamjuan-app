@@ -1,5 +1,4 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query";
-
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const usersApi = createApi({
     reducerPath : 'usersApi',
@@ -13,7 +12,8 @@ const usersApi = createApi({
             query: (data) =>({
                 url: `/auth/signup`,
                 method: 'POST',
-                body:data,              
+                body:data, 
+                headers: {"Authorization": `Bearer ${localStorage.getItem("token").replace(/['"]+/g, '')}`}             
             }),
         }),
         signout: builder.mutation({
@@ -24,7 +24,7 @@ const usersApi = createApi({
             }),
         }),
         signin: builder.mutation({
-            query: (data) =>({
+            query: ({data}) =>({
                 url: `/auth/signin`,
                 method: 'POST',
                 body:data,              
