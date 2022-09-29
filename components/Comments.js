@@ -16,7 +16,6 @@ export default function Comments(props) {
                 <Text style={styles.comment}>{item.comment}</Text>
                 </View>
     )
-    console.log(comments)
     
   return (
     <View style={styles.container}>
@@ -29,17 +28,18 @@ const styles = StyleSheet.create({
     container:{
         backgroundColor: "#111", 
         // height: "100%",
+        width:500
     },
     name:{
         color:"white",
-        fontSize:20,
+        fontSize:30,
         fontWeight: "bold"
     },
     comment:{
         color:"white",
         marginTop:10,
         padding:5,
-        fontSize:15,
+        fontSize:25,
         marginBottom: 10
     },
     img:{
