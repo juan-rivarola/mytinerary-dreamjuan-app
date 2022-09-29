@@ -11,33 +11,41 @@ export default function User() {
 
   const [useSignIn] = useSigninMutation()
 
-  const AccionS = async() =>{
+
+  const AccionS = () =>{
     let data = {
-      mail : mail,
-      password : password
+    mail : mail,
+    password : password
+  }
+  useSignIn(data)
+  setObjectValue(data)
+  }
+    // let user = AsyncStorage.getItem('user')
+
+  const setObjectValue = async (value)=>{
+  try{
+    const jsonValue = JSON.stringify(value)
+    await AsyncStorage.setItem('user',jsonValue)
+  }catch(error){
+        console.log(error)
+  }
+  }
+
+  const getMyObject = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem('user')
+      return jsonValue != null ? JSON.parse(jsonValue) : null
+    } catch(e) {
+      console.log(e)
     }
+  }
     
-    useSignIn(data)
-
-    try{
-       await AsyncStorage.setItem('user',JSON.stringify(data))
-      let user = AsyncStorage.getItem('user')
-      console.log(user)
-      
-    }catch(error){
-      console.log(error)
-    }
-    
-
-
-
       // .then(function(response){
       //   console.log(response)
       //   AsyncStorage.getItem('user')
       //   .then(value=> setUser(Json.parse(value)))
         // localStorage.setItem('token',JSON.stringify(response.data.response.token))
     // })
-  }
 
   return (
     <View style={styles.container}>
