@@ -4,6 +4,7 @@ import React from "react";
 import itinerariesApi from "./itinerariesApi";
 import commentsApi from "./commentsApi";
 import activitiesApi from "./activitiesApi";
+import usersApi from "./usersApi";
 
 
 export const  store = configureStore({
@@ -17,6 +18,9 @@ export const  store = configureStore({
         [commentsApi.reducerPath] : commentsApi.reducer,
         activities: activitiesApi,
         [activitiesApi.reducerPath] : activitiesApi.reducer,
+
+        users: usersApi,
+        [usersApi.reducerPath] : usersApi.reducer,
     },
 
     middleware: (getDefaultMiddleware)=> getDefaultMiddleware({
@@ -25,11 +29,13 @@ export const  store = configureStore({
         citiesApi: true,
         commentsApi:true,
         itinerariesApi:true,
-        activitiesApi:true
+        activitiesApi:true,
+        usersApi:true
     }).concat(citiesApi.middleware)
     .concat(commentsApi.middleware)
     .concat(citiesApi.middleware)
     .concat(itinerariesApi.middleware)
     .concat(activitiesApi.middleware)
+    .concat(usersApi.middleware)
 })
 
