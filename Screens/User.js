@@ -1,23 +1,42 @@
 import { View, Text,StyleSheet, Button,Alert } from 'react-native'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { TextInput } from 'react-native-gesture-handler'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { useSigninMutation } from '../features/usersApi'
 
 
 export default function User() {
-  const[user, setUser] = useState()
-  const AccionS = (e) =>{
-    e.preventDefault()
-    axios.post (`https://my-tinerary-dreamjuan-back.herokuapp.com/auth/signin`,{  
-      mail : mailS.current.value,
-      password : passS.current.value,})
-      .then(function(response){
-        console.log(response)
-        AsyncStorage.setItem('user',JSON.stringify(response.data.response.user))
-        AsyncStorage.getItem('user')
-        .then(value=> setUser(Json.parse(value)))
+  const [mail,setMail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const [useSignIn] = useSigninMutation()
+
+  const AccionS = async() =>{
+    let data = {
+      mail : mail,
+      password : password
+    }
+    
+    useSignIn(data)
+
+    try{
+       await AsyncStorage.setItem('user',JSON.stringify(data))
+      let user = AsyncStorage.getItem('user')
+      console.log(user)
+      
+    }catch(error){
+      console.log(error)
+    }
+    
+
+
+
+      // .then(function(response){
+      //   console.log(response)
+      //   AsyncStorage.getItem('user')
+      //   .then(value=> setUser(Json.parse(value)))
         // localStorage.setItem('token',JSON.stringify(response.data.response.token))
-    })
+    // })
   }
 
   return (
@@ -26,12 +45,13 @@ export default function User() {
       <TextInput
         placeholder='hola@gmail.com'
         style={styles.input}
-        // ref="asd"
+        onChangeText={setMail}
       />
       <TextInput
         placeholder='password'
         style={styles.input}
         secureTextEntry={true}
+        onChangeText={(text)=>setPassword(text)}
       />
       <Button title='Login' onPress={AccionS}></Button>
     </View>

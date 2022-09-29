@@ -14,8 +14,10 @@ export const  store = configureStore({
 
         itineraries: itinerariesApi,
         [itinerariesApi.reducerPath] : itinerariesApi.reducer,
+
         comments: commentsApi,
         [commentsApi.reducerPath] : commentsApi.reducer,
+        
         activities: activitiesApi,
         [activitiesApi.reducerPath] : activitiesApi.reducer,
 
