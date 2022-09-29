@@ -10,20 +10,21 @@ export default function Itinerary(props) {
 
     let {data:itineraries} = useBycityQuery(idCity)
     itineraries= itineraries
+    const itineraryCard = (item)=>(
+        <View style={styles.itineraryBox} key={item.name}>
+        <Text style={styles.description.name}>{item.name}</Text>
+        <Text style={styles.description}>Price: {item.price}</Text>
+        <Text style={styles.description}>Duration: {item.duration}</Text>
+        <Text style={styles.description}> {item.tags}</Text>
+        <Text style={styles.description}>Likes: {item.likes.length}</Text>
+        <Activities ItineraryId={item._id}/>
+    </View>
+    )
  //console.log(itineraries)
   return (
                     <View style={styles.container}>
                         <View style={styles.container.itinerary}>
-                            {itineraries.map(itinerary =>(
-                                <View style={styles.itineraryBox} key={itinerary.name}>
-                                    <Text style={styles.description.name}>{itinerary.name}</Text>
-                                    <Text style={styles.description}>Price: {itinerary.price}</Text>
-                                    <Text style={styles.description}>Duration: {itinerary.duration}</Text>
-                                    <Text style={styles.description}> {itinerary.tags}</Text>
-                                    <Text style={styles.description}>Likes: {itinerary.likes.length}</Text>
-                                    <Activities ItineraryId={itinerary._id}/>
-                                </View>
-                            ))}
+                            {itineraries?.map(itineraryCard)}
                         </View>
                     </View>
                     
