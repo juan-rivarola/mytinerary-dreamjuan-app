@@ -1,25 +1,26 @@
 import { View, Text,StyleSheet,Image } from 'react-native'
 import React from 'react'
-import { useAllQuery } from '../features/commentsApi'
+import { useByitineraryQuery } from '../features/commentsApi'
 
 
 export default function Comments(props) {
-    const id = props
-    let {data:comments} = useAllQuery(id)
-    const arrayComments = comments.response 
-    console.log(arrayComments) 
-
+    let id 
+    props.itinerary?id=props.itinerary:id=props
+    let {data:comments} = useByitineraryQuery(id)
+    console.log(comments)
+    const cardComment = (item)=>(
+        <View style={styles.containerComment}>
+                    <View style={styles.description}>
+                        <Image style={styles.img} source={{uri:item.user.photo}} />
+                        <Text style={styles.name}>{item.user.name}</Text>
+                    </View>
+                <Text style={styles.comment}>{item.comment}</Text>
+                </View>
+    )
+    
   return (
     <View style={styles.container}>
-            {arrayComments?.map(comment => (
-                <View style={styles.containerComment}>
-                    <View style={styles.description}>
-                        <Image style={styles.img} source={{uri:comment.user.photo}} />
-                        <Text style={styles.name}>{comment.user.name}</Text>
-                    </View>
-                <Text style={styles.comment}>{comment.comment}</Text>
-                </View>
-            ))}
+         {comments?.response?.map(cardComment)}
     </View>
   )
 }

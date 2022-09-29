@@ -12,6 +12,9 @@ const commentsApi = createApi({
         all:builder.query({
             query: ()=> `/comments`
         }),
+        byitinerary:builder.query({
+            query: (id)=>`comments/query?itinerary=${id}`
+        }),
         create:builder.mutation({
             query: (data)=> ({
             url:`/comments`,
@@ -39,4 +42,4 @@ const commentsApi = createApi({
 
 
 export default commentsApi
-export const {useAllQuery,useCreateMutation, useDeleteQuery, useEditMutation} = commentsApi
+export const {useAllQuery,useCreateMutation, useDeleteQuery, useEditMutation, useByitineraryQuery} = commentsApi
