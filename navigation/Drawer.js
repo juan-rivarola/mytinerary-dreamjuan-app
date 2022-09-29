@@ -9,6 +9,7 @@ import Details from '../Screens/Details'
 import Itinerary from '../components/Itinerary'
 import Comments from '../components/Comments'
 import MyStackScreen from './Stack';
+import MyTineraries from '../Screens/MyTineraries';
 
 const DrawerNav = createDrawerNavigator()
 
@@ -19,6 +20,7 @@ export default function Drawer(){
             <DrawerNav.Screen name='Cities' component={Cities}/>
             <DrawerNav.Screen name='New City' component={NewCity}/>
             <DrawerNav.Screen name='Profile' component={User}/>
+            <DrawerNav.Screen name='My Tineraries' component={MyTineraries} />
             <DrawerNav.Screen name=' ' component={Details} />
         </DrawerNav.Navigator>
     </>
