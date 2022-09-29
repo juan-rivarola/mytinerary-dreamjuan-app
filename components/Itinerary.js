@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react'
 import { useBycityQuery, useByuserQuery } from '../features/itinerariesApi'
 import Footer from './Footer'
 import Activities from './Activities'
+import Comments from './Comments'
 
 export default function Itinerary(props) {
     let idCity = "630e518bbe28a5faae2423c0"
@@ -18,9 +19,10 @@ export default function Itinerary(props) {
         <Text style={styles.description}> {item.tags}</Text>
         <Text style={styles.description}>Likes: {item.likes.length}</Text>
         <Activities ItineraryId={item._id}/>
+        <Comments itinerary={item._id} />
     </View>
     )
- //console.log(itineraries)
+
   return (
                     <View style={styles.container}>
                         <View style={styles.container.itinerary}>
