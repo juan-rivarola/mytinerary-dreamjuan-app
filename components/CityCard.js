@@ -1,13 +1,13 @@
 import React from "react";
 import { View, StyleSheet, Image,Text, Pressable, Alert } from "react-native";
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Stack from '../navigation/Stack'
 export default function CityCard(props){
 const navigation = useNavigation()
     const allCard = props.data.response ? props.data.response : props.data
     const card =(item) =>(
         <View style={styles.cards} key={item._id}>
-            <Pressable onPress={() =>navigation.navigate('Details',{id:item._id})}>
+            <Pressable onPress={() =>navigation.navigate(' ',{id:item._id})}>
             <Image source={{uri:item.image}} style={styles.img}/>
             <Text style={styles.country}>{item.name}</Text>
             </Pressable>

@@ -7,9 +7,8 @@ export default function Comments(props) {
     let id 
     props.itinerary?id=props.itinerary:id=props
     let {data:comments} = useByitineraryQuery(id)
-    console.log(comments)
     const cardComment = (item)=>(
-        <View style={styles.containerComment}>
+        <View style={styles.containerComment} key={item._id}>
                     <View style={styles.description}>
                         <Image style={styles.img} source={{uri:item.user.photo}} />
                         <Text style={styles.name}>{item.user.name}</Text>
