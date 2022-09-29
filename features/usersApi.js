@@ -24,7 +24,7 @@ const usersApi = createApi({
             }),
         }),
         signin: builder.mutation({
-            query: ({data}) =>({
+            query: (data) =>({
                 url: `/auth/signin`,
                 method: 'POST',
                 body:data,              
