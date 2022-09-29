@@ -2,6 +2,7 @@ import { View, Text,StyleSheet,ScrollView, Button } from 'react-native'
 import React, { useRef, useState } from 'react'
 import { useBycityQuery, useByuserQuery } from '../features/itinerariesApi'
 import Footer from './Footer'
+import Activities from './Activities'
 
 export default function Itinerary(props) {
     let idCity = "630e518bbe28a5faae2423c0"
@@ -9,19 +10,21 @@ export default function Itinerary(props) {
 
     let {data:itineraries} = useBycityQuery(idCity)
     itineraries= itineraries
-// console.log(id)
+    const itineraryCard = (item)=>(
+        <View style={styles.itineraryBox} key={item.name}>
+        <Text style={styles.description.name}>{item.name}</Text>
+        <Text style={styles.description}>Price: {item.price}</Text>
+        <Text style={styles.description}>Duration: {item.duration}</Text>
+        <Text style={styles.description}> {item.tags}</Text>
+        <Text style={styles.description}>Likes: {item.likes.length}</Text>
+        <Activities ItineraryId={item._id}/>
+    </View>
+    )
+ //console.log(itineraries)
   return (
                     <View style={styles.container}>
                         <View style={styles.container.itinerary}>
-                            {itineraries.map(itinerary =>(
-                                <View style={styles.itineraryBox}>
-                                    <Text style={styles.description.name}>{itinerary.name}</Text>
-                                    <Text style={styles.description}>Price: {itinerary.price}</Text>
-                                    <Text style={styles.description}>Duration: {itinerary.duration}</Text>
-                                    <Text style={styles.description}> {itinerary.tags}</Text>
-                                    <Text style={styles.description}>Likes: {itinerary.likes.length}</Text>
-                                </View>
-                            ))}
+                            {itineraries?.map(itineraryCard)}
                         </View>
                     </View>
                     
