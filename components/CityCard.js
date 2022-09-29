@@ -7,7 +7,7 @@ const navigation = useNavigation()
     const allCard = props.data.response ? props.data.response : props.data
     const card =(item) =>(
         <View style={styles.cards} key={item._id}>
-            <Pressable onPress={() =>navigation.navigate('Details')}>
+            <Pressable onPress={() =>navigation.navigate('Details',{id:item._id})}>
             <Image source={{uri:item.image}} style={styles.img}/>
             <Text style={styles.country}>{item.name}</Text>
             </Pressable>
