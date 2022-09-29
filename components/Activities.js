@@ -12,7 +12,6 @@ export default function Activities(props){
             <Text style={styles.actName}>{item.name}</Text>
         </View>
 )
-console.log(activities)
     return(
         <View>
             <Text style={styles.actTitle}>Activities</Text>
