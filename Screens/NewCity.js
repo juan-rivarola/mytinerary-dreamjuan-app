@@ -17,21 +17,26 @@ export default function NewCity() {
 
     const create = ()=>{
         let cityCreate ={
-            city:city,
+            name:city,
             country:country,
             image:image,
             population:population,
             fundation:fundation
         }
-        console.log(cityCreate)
         newCity(cityCreate)
-        if (cityCreated?.isSuccess) {
-            console.log('success')
-            Alert.alert('City created succesfully')
-        } else {
+        .then(function(res){
+            console.log(res.data.message)
+            if (res.data.message== 'city created') {               
+                Alert.alert('City created succesfully')
+            } else {
+                Alert.alert("Couldn´t create city")
+            }
+        })
+        .catch(error)
             console.log(error)
             Alert.alert("Couldn´t create city")
-        }
+
+            
     }
 
   return (
