@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native"
 import { useEffect, useRef, useState } from "react"
 import {FlatList, Image, View, Text, StyleSheet, Button } from "react-native"
 import { ScrollView } from "react-native-gesture-handler"
@@ -6,8 +7,10 @@ import Itinerary from "../components/Itinerary"
 import citiesApi, { useDetailsQuery } from "../features/citiesApi"
 import { useBycityQuery } from "../features/itinerariesApi"
 
-export default function Details({navigation}){
-    const id = '630e518bbe28a5faae2423c0'
+export default function Details(props){
+    let id
+    props.route.params.id? id=props.route.params.id: id=props
+    let navigation= useNavigation()
 let {data:city, isLoading, isSuccess}=useDetailsQuery(id)
 if (isLoading) {
     city=[]
@@ -16,7 +19,7 @@ if (isLoading) {
    }
 
     let {data:itineraries} = useBycityQuery(id)
-
+console.log(props.route.params.id) 
    const scrollRef = useRef()
     return(
     <ScrollView  ref={scrollRef}>
@@ -32,7 +35,7 @@ if (isLoading) {
                                 <Text style={styles.info}>Fundation Year: {city.fundation}</Text>
                                 <Text style={styles.info}>Population: {city.population}</Text>
                             </View>
-                            <Itinerary />
+                            <Itinerary id={id}/>
                         </View>
                     </View>
                    

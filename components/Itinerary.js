@@ -6,9 +6,9 @@ import Activities from './Activities'
 import Comments from './Comments'
 
 export default function Itinerary(props) {
-    let idCity = "630e518bbe28a5faae2423c0"
-    let id = props.data
-
+    let idCity
+    props.id?idCity=props.id:idCity=props
+   
     let {data:itineraries} = useBycityQuery(idCity)
     itineraries= itineraries
     const itineraryCard = (item)=>(
