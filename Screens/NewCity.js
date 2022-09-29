@@ -50,10 +50,9 @@ export default function NewCity() {
                 <TextInput  placeholder="Image" style={styles.input} onChangeText={newT=>setImage(newT)}/>
                 <TextInput  placeholder="Population" style={styles.input} onChangeText={newT=>setPopulation(newT)}/>
                 <TextInput  placeholder="Fundation" style={styles.input} onChangeText={newT=>setFundation(newT)}/>
-            <Button title='Add city' onPress={create}></Button>
+            <Button title='Add city' style={styles.button} onPress={create}></Button>
             <Footer />
         </View>
-        <Button style={styles.goTop} title="Top" onPress={()=> scrollRef.current.scrollTo({ x: 0, y: 0, animated: true })}/>
         </ScrollView>
     </View>
   )
@@ -61,8 +60,8 @@ export default function NewCity() {
 
 const styles = StyleSheet.create({
     container:{
-        backgroundColor: "black",
-        height: "100%",
+        backgroundColor: "#111",
+        height:'100%'
         // paddingTop: 100
     },
     input:{
@@ -77,10 +76,10 @@ const styles = StyleSheet.create({
     },
     newCity:{
         alignItems: "center",
-        backgroundColor: "gray"
+        backgroundColor: "gray",
     },
     title:{
         color:"#f45900",
         fontSize: 50
-    }
+    },
 })
