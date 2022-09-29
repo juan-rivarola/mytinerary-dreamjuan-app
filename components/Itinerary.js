@@ -5,9 +5,9 @@ import Footer from './Footer'
 import Activities from './Activities'
 
 export default function Itinerary(props) {
-    let idCity = "630e518bbe28a5faae2423c0"
-    let id = props.data
-
+    let idCity
+    props.id?idCity=props.id:idCity=props
+   
     let {data:itineraries} = useBycityQuery(idCity)
     itineraries= itineraries
     const itineraryCard = (item)=>(

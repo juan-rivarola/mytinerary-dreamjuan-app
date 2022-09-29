@@ -6,7 +6,6 @@ export default function Comments() {
     const idItinerary = "6316673e981c8cdc211716be"
     let {data:comments} = useAllQuery(idItinerary)
     const arrayComments = comments.response
-    console.log(arrayComments)
   return (
     <View style={styles.container}>
             {arrayComments.map(comment => (
