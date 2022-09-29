@@ -15,7 +15,7 @@ if (isLoading) {
     city=city.response
    }
 
-//    let {data:itineraries} = useBycityQuery(id)
+    let {data:itineraries} = useBycityQuery(id)
 
    const scrollRef = useRef()
     return(
