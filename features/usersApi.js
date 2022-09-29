@@ -8,17 +8,24 @@ const usersApi = createApi({
         baseUrl: 'https://my-tinerary-dreamjuan-back.herokuapp.com',
     }),
 
-    endpoints: (build)=>({
-        createuser: build.query({
+    endpoints: (builder)=>({
+        createuser: builder.mutation({
             query: (data) =>({
                 url: `/auth/signup`,
                 method: 'POST',
                 body:data,              
             }),
         }),
-        signout: build.query({
+        signout: builder.mutation({
             query: (data) =>({
                 url: `/auth/signout`,
+                method: 'POST',
+                body:data,              
+            }),
+        }),
+        signin: builder.mutation({
+            query: (data) =>({
+                url: `/auth/signin`,
                 method: 'POST',
                 body:data,              
             }),
@@ -27,4 +34,4 @@ const usersApi = createApi({
 })
 
 export default usersApi
-export const {useCreateuserMutation,useSignoutMutation} = usersApi
+export const {useCreateuserMutation,useSignoutMutation,useSigninMutation} = usersApi

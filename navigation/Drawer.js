@@ -19,7 +19,6 @@ export default function Drawer(){
             <DrawerNav.Screen name='Cities' component={Cities}/>
             <DrawerNav.Screen name='New City' component={NewCity}/>
             <DrawerNav.Screen name='Profile' component={User}/>
-            <DrawerNav.Screen name='Comments' component={Comments}/>
             <DrawerNav.Screen name=' ' component={Details} />
         </DrawerNav.Navigator>
     </>
