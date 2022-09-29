@@ -19,7 +19,6 @@ if (isLoading) {
    }
 
     let {data:itineraries} = useBycityQuery(id)
-console.log(props.route.params.id) 
    const scrollRef = useRef()
     return(
     <ScrollView  ref={scrollRef}>
