@@ -18,9 +18,8 @@ const usersApi = createApi({
         }),
         signout: builder.mutation({
             query: (data) =>({
-                url: `/auth/signout`,
-                method: 'POST',
-                body:data,              
+                url: `/auth/signout/${data}`,
+                method: 'POST',        
             }),
         }),
         signin: builder.mutation({
