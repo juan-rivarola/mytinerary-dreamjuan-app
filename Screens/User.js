@@ -2,7 +2,7 @@ import { View, Text,StyleSheet, Button,Alert } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
 import { TextInput } from 'react-native-gesture-handler'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { useSigninMutation } from '../features/usersApi'
+import { useSigninMutation, useSignoutMutation } from '../features/usersApi'
 
 
 export default function User() {
@@ -12,27 +12,27 @@ export default function User() {
   const [user,setUser] = useState()
 
   const [useSignIn] = useSigninMutation()
+  const [useSignOUT] = useSignoutMutation()
 
-
-  const signIN = () =>{
-    let data = {
-    mail : mail,
-    password : password
-  }
-  useSignIn(data)
-  AsyncStorage.setItem('user',JSON.stringify(data)).then(value => setNameUser(value) )
-  setLogged(!logged)
-  console.log(useSignIn(data))
-  console.log(logged)
-  }
+  // const signIN = () =>{
+  //   let data = {
+  //   mail : mail,
+  //   password : password
+  // }
+  // useSignIn(data)
+  // AsyncStorage.setItem('user',JSON.stringify(data)).then(value => setNameUser(value) )
+  // setLogged(!logged)
+  // console.log(useSignIn(data))
+  // console.log(logged)
+  // }
 
   const signOUT = ()=>{
+    useSignOUT(userID.id)
     setLogged(!logged)
-    console.log(logged)
+    Alert.alert(`Logged out successfully`)
   }
 
 
-  // funciona
   const setData = async (value)=>{
     try{
       await  AsyncStorage.setItem('user',JSON.stringify(value))
@@ -61,25 +61,12 @@ export default function User() {
     }else{
       setData(data.response.user)
       await getData()
-      Alert.alert("You are Logged")
-      console.log(data.response.user)
+      Alert.alert(`Welcome ${data.response.user.name}`)
     }
-    
+    setLogged(!logged)
   }
-
-
-    // let user = AsyncStorage.getItem('user')
-    // useEffect(()=>{
-    //   AsyncStorage.getItem('user') ? setLogged(!logged) : setLogged(logged)
-    // },[])
-  // clearAll()
-
-      // .then(function(response){
-      //   console.log(response)
-      //   AsyncStorage.getItem('user')
-      //   .then(value=> setUser(Json.parse(value)))
-        // localStorage.setItem('token',JSON.stringify(response.data.response.token))
-    // })
+  const [userID,setUserID] = useState("")
+AsyncStorage.getItem("user").then(user =>setUserID(JSON.parse(user)))
 
   return (
     <View style={styles.container}>
@@ -95,8 +82,7 @@ export default function User() {
         secureTextEntry={true}
         onChangeText={(text)=>setPassword(text)}
       />
-      {/* <Button title='Login' onPress={AccionS}></Button> */}
-      {logged ? <>
+      {!logged ? <>
                   <Button title='Sign in' onPress={handleSubmit}></Button>
                   <Text style={styles.disconnected}>Disconnected</Text>
                 </>
