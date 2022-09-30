@@ -11,8 +11,8 @@ export default function Welcome({navigation}) {
 
   const scrollRef = useRef()
   return (
-    <View style={styles.container}>
       <ScrollView ref={scrollRef}>
+    <View style={styles.container}>
       <Header />
       <Text style={styles.text2}>Take the trip of you always wanted, to the city of your drems</Text>
       <View style={styles.calltoaction}>
@@ -23,9 +23,10 @@ export default function Welcome({navigation}) {
       <StatusBar style="auto" />
       <Carousel />
       <Footer />
-      <Button style={styles.goTop} title="Top" onPress={()=> scrollRef.current.scrollTo({ x: 0, y: 0, animated: true })}/>
-      </ScrollView>
+      <Text style={styles.goTop} onPress={()=> scrollRef.current.scrollTo({ x: 0, y: 0, animated: true })}>Top</Text>
+      {/* <Button  title="Top" onPress={()=> scrollRef.current.scrollTo({ x: 0, y: 0, animated: true })}/> */}
     </View>
+      </ScrollView>
   );
 }
 
@@ -56,4 +57,13 @@ const styles = StyleSheet.create({
     flex:1,
     alignItems:'center',
   },
+  goTop:{
+    color: "white",
+    fontSize: 25,
+    paddingVertical:20,
+    backgroundColor:"#32D",
+    width: "100%",
+    textAlign: "center",
+    fontWeight: "bold"
+  }
 });

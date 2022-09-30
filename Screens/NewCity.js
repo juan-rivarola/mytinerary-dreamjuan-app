@@ -53,6 +53,7 @@ export default function NewCity() {
             <Button title='Add city' style={styles.button} onPress={create}></Button>
             <Footer />
         </View>
+        <Text style={styles.goTop} onPress={()=> scrollRef.current.scrollTo({ x: 0, y: 0, animated: true })}>Top</Text>
         </ScrollView>
     </View>
   )
@@ -82,4 +83,13 @@ const styles = StyleSheet.create({
         color:"#f45900",
         fontSize: 50
     },
+    goTop:{
+        color: "white",
+        fontSize: 25,
+        paddingVertical:20,
+        backgroundColor:"#32D",
+        width: "100%",
+        textAlign: "center",
+        fontWeight: "bold"
+      }
 })
