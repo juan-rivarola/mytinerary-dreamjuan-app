@@ -32,6 +32,7 @@ export default function MyTineraries(){
         <View style={styles.container}>
          {itineraries?.map(itineraryCard)}
         </View>
+        <Text style={styles.goTop} onPress={()=> scrollRef.current.scrollTo({ x: 0, y: 0, animated: true })}>Top</Text>
         </ScrollView>
     )
 }
@@ -61,6 +62,15 @@ const styles = StyleSheet.create({
     itineraryBox:{
         alignItems: "center",
         marginVertical: 20
-    }
+    },
+    goTop:{
+        color: "white",
+        fontSize: 25,
+        paddingVertical:20,
+        backgroundColor:"#32D",
+        width: "100%",
+        textAlign: "center",
+        fontWeight: "bold"
+      }
     
 })

@@ -26,7 +26,8 @@ export default function Cities({navigation}){
                  onChangeText={newT=>setSearch(newT)}/> 
                    <CityCard data={cities} id={cities._id}/>                
                    <Footer />
-                   <Button style={styles.goTop} title="Top" onPress={()=> scrollRef.current.scrollTo({ x: 0, y: 0, animated: true })}/>
+                   <Text style={styles.goTop} onPress={()=> scrollRef.current.scrollTo({ x: 0, y: 0, animated: true })}>Top</Text>
+                   
                 </ScrollView>
         </View>
     )
@@ -48,5 +49,14 @@ const styles =StyleSheet.create({
     },
     cardContainer:{
         flex:0
-    }
+    },
+    goTop:{
+        color: "white",
+        fontSize: 25,
+        paddingVertical:20,
+        backgroundColor:"#32D",
+        width: "100%",
+        textAlign: "center",
+        fontWeight: "bold"
+      }
 })

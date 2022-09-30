@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { TextInput } from 'react-native-gesture-handler'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useSigninMutation, useSignoutMutation } from '../features/usersApi'
+import  Header  from '../components/Header'
 
 
 export default function User() {
@@ -70,6 +71,7 @@ AsyncStorage.getItem("user").then(user =>setUserID(JSON.parse(user)))
 
   return (
     <View style={styles.container}>
+      <Header />
       <Text style={styles.signin}>Sign In</Text>
       <TextInput
         placeholder='hola@gmail.com'
@@ -82,7 +84,7 @@ AsyncStorage.getItem("user").then(user =>setUserID(JSON.parse(user)))
         secureTextEntry={true}
         onChangeText={(text)=>setPassword(text)}
       />
-      {!logged ? <>
+      {logged ? <>
                   <Button title='Sign in' onPress={handleSubmit}></Button>
                   <Text style={styles.disconnected}>Disconnected</Text>
                 </>
@@ -91,6 +93,7 @@ AsyncStorage.getItem("user").then(user =>setUserID(JSON.parse(user)))
                     <Text style={styles.connected}>Connected</Text>
                  </>
                  }
+                 
     </View>
   )
 }
@@ -99,10 +102,7 @@ const styles = StyleSheet.create({
   container:{
     backgroundColor: "black", 
     height: "100%",
-    // justifyContent: "center",
     alignItems: "center",
-    paddingTop: 40,
-
   },
   signin:{
     color:"#f45900",
@@ -123,5 +123,5 @@ const styles = StyleSheet.create({
   connected:{
     color: "green",
     fontWeight: "bold"
-  },
+  }
 })

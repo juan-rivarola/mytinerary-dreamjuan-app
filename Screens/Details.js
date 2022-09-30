@@ -37,14 +37,14 @@ if (isLoading) {
                             <Itinerary id={id}/>
                         </View>
                     </View>
-                   
+                    <Text style={styles.goTop} onPress={()=> scrollRef.current.scrollTo({ x: 0, y: 0, animated: true })}>Top</Text>
                     </ScrollView>
     )
 }
 const styles =StyleSheet.create({
     container:{
         backgroundColor:'black',
-        minHeight:1000,
+        height:"100%",
         details:{
             borderColor: "white",
             borderWidth: 2,
@@ -88,5 +88,14 @@ const styles =StyleSheet.create({
         fontSize: 40,
         position:"absolute",
         right: 10
-    }
+    },
+    goTop:{
+        color: "white",
+        fontSize: 25,
+        paddingVertical:20,
+        backgroundColor:"#32D",
+        width: "100%",
+        textAlign: "center",
+        fontWeight: "bold"
+      },
 })
