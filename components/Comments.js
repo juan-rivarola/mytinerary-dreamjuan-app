@@ -40,7 +40,8 @@ const styles = StyleSheet.create({
         marginTop:10,
         padding:5,
         fontSize:25,
-        marginBottom: 10
+        marginBottom: 10,
+        paddingStart: 60
     },
     img:{
         width: 70,
@@ -51,7 +52,8 @@ const styles = StyleSheet.create({
     description:{
         flexDirection:"row",
         alignItems:"center",
-        marginTop:20
+        marginTop:20,
+        paddingStart: 40
     },
     containerComment:{
         // marginTop:40,
