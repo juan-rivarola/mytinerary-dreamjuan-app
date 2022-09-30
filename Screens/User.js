@@ -9,7 +9,7 @@ export default function User() {
   const [mail,setMail] = useState("")
   const [password, setPassword] = useState("")
   const [logged, setLogged] = useState(false)
-  const [nameUser,setNameUser] = useState("")
+  const [user,setUser] = useState()
 
   const [useSignIn] = useSigninMutation()
 
@@ -30,6 +30,44 @@ export default function User() {
     setLogged(!logged)
     console.log(logged)
   }
+
+
+  // funciona
+  const setData = async (value)=>{
+    try{
+      await  AsyncStorage.setItem('user',JSON.stringify(value))
+    }catch(error){
+      console.log(error)
+    }
+  }
+  const getData = async ()=>{
+    try{
+      await AsyncStorage.getItem('user').then(value =>setUser(value))
+    }catch(error){
+      console.log(error)
+    }
+  }
+  const handleSubmit = async ()=>{
+    let user = {
+      mail : mail,
+      password : password
+    }
+
+    let {data,error} = await useSignIn(user)
+    if(error){
+      Alert.alert(
+        "try again"
+      )
+    }else{
+      setData(data.response.user)
+      await getData()
+      Alert.alert("You are Logged")
+      console.log(data.response.user)
+    }
+    
+  }
+
+
     // let user = AsyncStorage.getItem('user')
     // useEffect(()=>{
     //   AsyncStorage.getItem('user') ? setLogged(!logged) : setLogged(logged)
@@ -59,7 +97,7 @@ export default function User() {
       />
       {/* <Button title='Login' onPress={AccionS}></Button> */}
       {logged ? <>
-                  <Button title='Sign in' onPress={signIN}></Button>
+                  <Button title='Sign in' onPress={handleSubmit}></Button>
                   <Text style={styles.disconnected}>Disconnected</Text>
                 </>
                  :<>
