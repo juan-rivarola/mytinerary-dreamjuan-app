@@ -1,4 +1,5 @@
-import React from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import React, { useState } from "react";
 import { View, StyleSheet, Text } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import Activities from "../components/Activities";
@@ -6,7 +7,14 @@ import Comments from "../components/Comments";
 import { useByuserQuery } from "../features/itinerariesApi"; 
 
 export default function MyTineraries(){
-    let id='632201f8b547c3f58558acde'
+    const [id, setId] = useState('')
+    const thisId = async ()=>{
+        try{
+      await AsyncStorage.getItem('user')?(value =>setId(JSON.parse)):setId('')
+        }catch(e){console.log(e)}
+    }
+    thisId()
+    console.log(id)
     let {data:itineraries} = useByuserQuery(id)
     const itineraryCard = (item)=>(
         <View style={styles.itineraryBox} key={item._id}>

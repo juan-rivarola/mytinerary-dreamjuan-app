@@ -1,7 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Image,Text, Pressable, Alert } from "react-native";
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import Stack from '../navigation/Stack'
+import {  useNavigation } from '@react-navigation/native';
 export default function CityCard(props){
 const navigation = useNavigation()
     const allCard = props.data.response ? props.data.response : props.data
