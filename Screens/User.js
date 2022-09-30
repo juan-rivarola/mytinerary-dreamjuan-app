@@ -8,38 +8,34 @@ import { useSigninMutation } from '../features/usersApi'
 export default function User() {
   const [mail,setMail] = useState("")
   const [password, setPassword] = useState("")
+  const [logged, setLogged] = useState(false)
+  const [nameUser,setNameUser] = useState("")
 
   const [useSignIn] = useSigninMutation()
 
 
-  const AccionS = () =>{
+  const signIN = () =>{
     let data = {
     mail : mail,
     password : password
   }
   useSignIn(data)
-  setObjectValue(data)
+  AsyncStorage.setItem('user',JSON.stringify(data)).then(value => setNameUser(value) )
+  setLogged(!logged)
+  console.log(useSignIn(data))
+  console.log(logged)
+  }
+
+  const signOUT = ()=>{
+    setLogged(!logged)
+    console.log(logged)
   }
     // let user = AsyncStorage.getItem('user')
+    // useEffect(()=>{
+    //   AsyncStorage.getItem('user') ? setLogged(!logged) : setLogged(logged)
+    // },[])
+  // clearAll()
 
-  const setObjectValue = async (value)=>{
-  try{
-    const jsonValue = JSON.stringify(value)
-    await AsyncStorage.setItem('user',jsonValue)
-  }catch(error){
-        console.log(error)
-  }
-  }
-
-  const getMyObject = async () => {
-    try {
-      const jsonValue = await AsyncStorage.getItem('user')
-      return jsonValue != null ? JSON.parse(jsonValue) : null
-    } catch(e) {
-      console.log(e)
-    }
-  }
-    
       // .then(function(response){
       //   console.log(response)
       //   AsyncStorage.getItem('user')
@@ -61,7 +57,16 @@ export default function User() {
         secureTextEntry={true}
         onChangeText={(text)=>setPassword(text)}
       />
-      <Button title='Login' onPress={AccionS}></Button>
+      {/* <Button title='Login' onPress={AccionS}></Button> */}
+      {logged ? <>
+                  <Button title='Sign in' onPress={signIN}></Button>
+                  <Text style={styles.disconnected}>Disconnected</Text>
+                </>
+                 :<>
+                    <Button title='Sign out' onPress={signOUT}></Button>
+                    <Text style={styles.connected}>Connected</Text>
+                 </>
+                 }
     </View>
   )
 }
@@ -86,5 +91,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingStart: 15,
     padding:10
-  }
+  },
+  disconnected:{
+    color: "red",
+    fontWeight: "bold"
+  },
+  connected:{
+    color: "green",
+    fontWeight: "bold"
+  },
 })
