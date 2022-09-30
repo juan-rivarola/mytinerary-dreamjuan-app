@@ -8,7 +8,7 @@ export default function Header() {
             <Text style={styles.title.my}>My</Text>
             <Text style={styles.title.tin}>Tinerary</Text>
         </View>
-      <Image source={{uri: "https://cdn-icons-png.flaticon.com/512/3711/3711310.png",}} style={styles.img}/>
+      {/* <Image source={{uri: "https://cdn-icons-png.flaticon.com/512/3711/3711310.png",}} style={styles.img}/> */}
     </View>
   );
 }

@@ -67,7 +67,10 @@ export default function User() {
     setLogged(!logged)
   }
   const [userID,setUserID] = useState("")
-AsyncStorage.getItem("user").then(user =>setUserID(JSON.parse(user)))
+  useEffect(()=>{
+    AsyncStorage.getItem("user").then(user =>setUserID(JSON.parse(user)))
+
+  },[])
 
   return (
     <View style={styles.container}>
@@ -84,7 +87,7 @@ AsyncStorage.getItem("user").then(user =>setUserID(JSON.parse(user)))
         secureTextEntry={true}
         onChangeText={(text)=>setPassword(text)}
       />
-      {logged ? <>
+      {!logged ? <>
                   <Button title='Sign in' onPress={handleSubmit}></Button>
                   <Text style={styles.disconnected}>Disconnected</Text>
                 </>
